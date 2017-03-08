@@ -11,8 +11,11 @@ $sudo apt-get install wireshark
 Choisir "Yes" pour utilisateur normal
 
 $sudo addgroup debian wireshark
+
 $sudo apt-get install openconnect
+
 $sudo apt-get install freerdp-x11
+
 
 ## Présentation générale de l'infrastructure
 - Plan du réseau
