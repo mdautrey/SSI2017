@@ -9,16 +9,15 @@ Déloger / loger
   $sudo apt-get install wireshark
 
 Choisir "Yes" pour utilisateur normal
-
-  $sudo addgroup debian wireshark
-  $sudo apt-get install openconnect
-  $sudo apt-get install freerdp-x11
-  $sudo openconnect dcloud-lon-anyconnect.cisco.com
-  $sudo routel
+    $sudo addgroup debian wireshark
+    $sudo apt-get install openconnect
+    $sudo apt-get install freerdp-x11
+    $sudo openconnect dcloud-lon-anyconnect.cisco.com
+    $sudo routel
 
 Dans une autre console :
-  $ping  198.19.10.200
-  $xfreerdp /u:administrator /p:C1sco12345 /v:198.19.10.1
+    $ping  198.19.10.200
+    $xfreerdp /u:administrator /p:C1sco12345 /v:198.19.10.1
 
 ## Présentation générale de l'infrastructure
 - Plan du réseau
