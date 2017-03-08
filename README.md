@@ -16,7 +16,7 @@ $sudo apt-get install openconnect
 
 $sudo apt-get install freerdp-x11
 
-$sudo xfreerdp dcloud-lon-anyconnect.cisco.com
+$sudo openconnect dcloud-lon-anyconnect.cisco.com
 
 Autre console :
 $ping  198.19.10.200
