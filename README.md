@@ -1,5 +1,20 @@
 # SSI2017
-## Présentation générale du TD
+## Initialisation de la machine virtuelle
+Faire un snapshot de l'état initial de la machine
+
+$addgroup debian sudo
+
+Déloger / loger
+
+$sudo apt-get install wireshark
+
+Choisir "Yes" pour utilisateur normal
+
+$sudo addgroup debian wireshark
+$sudo apt-get install openconnect
+$sudo apt-get install freerdp-x11
+
+## Présentation générale de l'infrastructure
 - Plan du réseau
 - Différents éléments
 
