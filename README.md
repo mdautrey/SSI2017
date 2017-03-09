@@ -129,7 +129,16 @@ $sudo iptables -t nat -L -v
 
 ```
 
-
-
-  
-
+### Etape 3 : protéger le firewall
+Bloquer l'ensemble du trafic destiné au firewall, sauf SSH et PING
+```
+$sudo iptables -t filter -A OUTPUT -p icmp -j ACCEPT           
+$sudo iptables -t filter -A INPUT -p icmp -j ACCEPT                       
+$sudo iptables -t filter -A OUTPUT -p TCP --sport 22 -j ACCEPT            
+$sudo iptables -t filter -A INPUT -p TCP --dport 22 -j ACCEPT
+$sudo iptables -A OUTPUT -o lo -j ACCEPT
+$sudo iptables -A INPUT -i lo -j ACCEPT
+$sudo iptables -t filter -P INPUT DROP
+$sudo iptables -t filter -P OUTPUT DROP
+$sudo iptables -t filter -P FORWARD DROP
+```
