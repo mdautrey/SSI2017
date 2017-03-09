@@ -99,6 +99,7 @@ Les 4 modules interagissent dans une machine Linux pour produire un firewall rel
     $cat /etc/resolv.conf
     $vim /etc/hostname
     NETFILTER
+    $sudo service networking restart
  ```
 Tester ensuite le ping vers l'extérieur et le ping depuis le client se trouvant sur le réseau host only.
 Les deux doivent être OK.
