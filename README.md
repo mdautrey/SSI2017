@@ -78,7 +78,7 @@ Les machines serveurs (IP fixes) sont dans le 192.168.49.224/27
 
 Cf : http://jodies.de/ipcalc 
 
-## Firewall IPTable
+## Firewall NETFILTER
 Il comporte 3 modules principaux :
 - IPRoute2 : embarque les fonctions de routage
 - Netfilter/IPtable : le firewall à proprement parler
@@ -86,7 +86,7 @@ Il comporte 3 modules principaux :
 
 Les 4 modules interagissent dans une machine Linux pour produire un firewall relativement complet.
 
-### Configuration du firewall IPtable
+### Configuration du firewall NETFILTER
 #### Etape 1 : poser la machine sur le réseau
 ```
     $sudo addgroup <useraccount> sudo
