@@ -1,6 +1,6 @@
 # SSI2017
 ## Adresses IP des machines
-* NETFILTER : 192.168.49.254
+* NETFILTER : 192.168.49.253
 * Réseau host only : VMNET4
 * Réseau bridge : VMNET2
 
@@ -94,7 +94,7 @@ Les 4 modules interagissent dans une machine Linux pour produire un firewall rel
     $vim /etc/network/interfaces
     allow-hotplug eth0
     iface eth0 inet static
-        address 192.168.49.254
+        address 192.168.49.253
         netmask 255.255.255.0
     $cat /etc/resolv.conf
     $vim /etc/hostname
