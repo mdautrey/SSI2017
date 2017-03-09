@@ -1,8 +1,8 @@
 # SSI2017
 ## Adresses IP des machines
-NETFILTER : 192.168.49.254
-Réseau host only : VMNET4
-Réseau bridge : VMNET2
+* NETFILTER : 192.168.49.254
+* Réseau host only : VMNET4
+* Réseau bridge : VMNET2
 
 ## Initialisation de la machine virtuelle
 Faire un snapshot de l'état initial de la machine
