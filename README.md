@@ -99,8 +99,37 @@ Les 4 modules interagissent dans une machine Linux pour produire un firewall rel
     $cat /etc/resolv.conf
     $vim /etc/hostname
     NETFILTER
+    $vim /etc/hosts
+    127.0.1.1 NETFILTER
     $sudo service networking restart
  ```
 Tester ensuite le ping vers l'extérieur et le ping depuis le client se trouvant sur le réseau host only.
 Les deux doivent être OK.
+
+#### Etape 2 : activer le routage, mettre en place le NAT
+Activer le routage :
+```
+  $sudo vim /etc/sysctl.conf
+  net.ipv4.ip_forward=1
+```
+Activer le NAT
+* eth1 : interface WAN
+* eth0 : interface LAN
+```
+$sudo iptables -A FORWARD -i eth0 -j ACCEPT
+$sudo iptables -A FORWARD -o eth0 -j ACCEPT
+$sudo iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+```
+Vérification
+* Pinger depuis la station présente sur le réseau interne vers une IP externe
+* Lister les règles sur le firewal
+```
+$sudo iptables -L -v
+$sudo iptables -t nat -L -v
+
+```
+
+
+
+  
 
