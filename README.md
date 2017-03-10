@@ -224,4 +224,15 @@ On arrête la machine et on fait un snapshot en préparation des étapes suivant
   
 ## Chiffres
 ### MD5SUM
-http://ftp.us.debian.org/debian/pool/main/o/openssh/openssh-server_7.4p1-7_i386.deb
+Pour vérifier l'authenticité d'un fichier, la commande MD5SUM génère un hash du fichier. Il me semble que MD5 n'est pas sûr et qu'il peut y avoir des collisions.
+
+Exemple :
+```
+$wget http://ftp.us.debian.org/debian/pool/main/o/openssh/openssh-server_7.4p1-7_i386.deb
+$md5sum openssh-server_7.4p1-7_i386.deb
+```
+Comparer la valeur à la valeur affichée par debian sur son site
+
+### Authentification SSH
+ 
+ $ssh-keygen -t rsa -b 4096
