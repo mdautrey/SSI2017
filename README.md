@@ -187,5 +187,38 @@ Fin de la configuration réseau minimale, ouvrir un browser sur le réseau host 
 * Password : pfsense
 
 ### Configurer le firewall depuis l'interface Web
+- Hostname : PFSENSE
+- Domain : local
+- Primary DNS Server : vide (conf DHCP WAN)
+- Secondary DNS Server : vide
 
+Ecran suivant
 
+- NTP server: inchangé (on reste sur celui de pfsense pour la démonstration)
+- Time zone :  Paris
+
+Ecran suivant
+
+- WAN : on ne change rien
+
+Ecran suivant 
+
+- LAN : on ne change rien
+
+Ecran suivant
+- cliquer sur le lien pour accéder à la configuration Web => affichage d'un dashboard system
+
+On arrête la machine et on fait un snapshot en préparation des étapes suivantes.
+
+### Gestion des flux
+#### Contrôle de la configuration de base
+- Désactiver le DHCP intégré à l'outil de virtualisation (VMWARE)
+- Démarrer le PFSENSE
+- Démarrer un client sur le réseau host-only
+- Mettre le client en IP dynamique
+  * Supprimer la configuration de eth0 dans /etc/network/interfaces
+  * reboot (ou redémarrage ntwk et ntwk manager)
+  * /sbin/ifconfig => ok lease dhcp 192.168.49.17
+  * ping adresse IP externe => ok
+  * traceroute adresse IP externe => le flux passe bien par le pfsense
+  
