@@ -222,3 +222,6 @@ On arrête la machine et on fait un snapshot en préparation des étapes suivant
   * ping adresse IP externe => ok
   * traceroute adresse IP externe => le flux passe bien par le pfsense
   
+## Chiffres
+### MD5SUM
+http://ftp.us.debian.org/debian/pool/main/o/openssh/openssh-server_7.4p1-7_i386.deb
