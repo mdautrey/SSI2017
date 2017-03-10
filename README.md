@@ -54,17 +54,20 @@ Machines de base utilisées pour monter les machines du réseau :
 - Création d'un réseau Custom : vmnet4 / 192.168.49.0/24
 - Les machines IPTable et Pfsense ont une interface sur vmnet4 et une interface bridge sur le réseau externe
 - Les autres machines ont une interface sur vmnet4
+- Attention aux adresses réservées par VMWARE (gateway, host, dhcp, .1, .2, .254)
 
 Le réseau interne (VMNET4) est en 192.168.49.0/24.
 
-La plage DHCP est en 192.168.49.0/29
-- Netmask:   255.255.255.224 = 27
-- Wildcard:  0.0.0.31
-- Network:   192.168.49.0/27
+La plage DHCP est en 192.168.49.16/28
+- Address:   192.168.49.16
+- Netmask:   255.255.255.240 = 28
+- Wildcard:  0.0.0.15
+- Network:   192.168.49.16/28
 - Broadcast: 192.168.49.31
-- HostMin:   192.168.49.1
+- HostMin:   192.168.49.17
 - HostMax:   192.168.49.30
-- Hosts/Net: 30             
+- Hosts/Net: 14
+             
 
 
 Les machines serveurs (IP fixes) sont dans le 192.168.49.224/27
@@ -142,3 +145,47 @@ $sudo iptables -t filter -P INPUT DROP
 $sudo iptables -t filter -P OUTPUT DROP
 $sudo iptables -t filter -P FORWARD DROP
 ```
+
+## Firewall PFSENSE
+- IP LAN : 192.168.49.252
+- Plage DHCP : 192.168.49.16/28
+
+### Définir la machine
+- FreeBSD64
+- 2 interfaces réseau, une bridge, l'autre host only
+- 2 cores
+- 2048Mo de mémoire
+- Boot CDROM sur l'iso de Pfsense
+
+### Poser le système sur la machine
+Booter la VM sur l'ISO d'installation
+
+1. Boot multi user : enter
+2. I
+3. Change keymap to FR/ISO => accept settings
+4. Quick and easy install : enter
+5. Enter (standard)
+6. Reboot
+
+### Booter sur le disque de la machine + configurer
+7. Enter
+8. Vérifier l'attribution des interfaces réseau LAN et WAN
+9. Si interfaces réseau mal attribuées, choix 1) puis réattribuer les interfaces
+10. Choix 2) enter
+11. Laisser l'interface WAN en DHCP
+12. Configurer l'interface LAN :
+  * IP : 192.168.49.252
+  * Mask : 24
+  * Enter (pas de gateway)
+  * Enter (pas d'IPV6)
+  * Enable DHCP : y
+  * DHCP : 192.168.49.17 / 192.168.49.31
+  * Revert to http : si y => choix entre http et https, si n => https uniquement : n
+
+Fin de la configuration réseau minimale, ouvrir un browser sur le réseau host only et poursuivre en allant à l'adresse : https://192.168.49.252
+* Login : admin
+* Password : pfsense
+
+### Configurer le firewall depuis l'interface Web
+
+
